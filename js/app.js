@@ -29,48 +29,32 @@ var sections = document.querySelectorAll('section');
  * Start Helper Functions
  *
  */
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
-
-// build the nav
-
-// Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
 // Build menu
 function BuildMenu() {
-  var ul = document.getElementById('navbar__list');
-
   for (i of sections) {
-    var menuItem = document.createElement('li');
-    menuItem.innerHTML = `<a id="id_${i.id}" href="#${i.id}" class="menu__link">${i.dataset.nav}</a>`;
+    let menuItem = document.createElement('li');
+    menuItem.innerHTML = `<a id="id_${i.id}" href="#${i.id}" 
+    class="menu__link" onclick="fn_scroll(event,this)">${i.dataset.nav}</a>`;
     document.getElementById('navbar__list').appendChild(menuItem);
   }
 }
 
 // Scroll to section on link click
+function fn_scroll(e, sender) {
+  e.preventDefault();
+  let trigger = document.getElementById(sender.id.replace('id_', ''));
+  let dimintions = trigger.getBoundingClientRect();
+  window.scrollTo(0, dimintions.top + window.scrollY);
+}
 
-// Set sections as active
-
+//start build menu
 BuildMenu();
-//Start functions
-window.addEventListener('scroll', function () {
-  // console.log('scrolling');
 
+//add event listner
+window.addEventListener('scroll', function () {
   sections.forEach((section) => {
     const box = section.getBoundingClientRect();
     if (box.top <= 200 && box.bottom >= 201) {
-      //   console.log('scrolling' + section.id, box.top);
       section.classList.add('your-active-class');
       document.getElementById(`id_${section.id}`).classList.add('active');
     } else {
