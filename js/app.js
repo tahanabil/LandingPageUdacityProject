@@ -43,8 +43,7 @@ function BuildMenu() {
 function fn_scroll(e, sender) {
   e.preventDefault();
   let trigger = document.getElementById(sender.id.replace('id_', ''));
-  let dimintions = trigger.getBoundingClientRect();
-  window.scrollTo(0, dimintions.top + window.scrollY);
+  trigger.scrollIntoView({ behavior: 'smooth' });
 }
 
 //start build menu
