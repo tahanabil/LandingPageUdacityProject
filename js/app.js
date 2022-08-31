@@ -14,11 +14,6 @@
  */
 
 /**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
- */
-
-/**
  * Define Global Variables
  *
  */
@@ -29,6 +24,10 @@ const sections = document.querySelectorAll('section');
  * Start Helper Functions
  *
  */
+//////////////////////////
+//Function section ...
+//////////////////////////
+
 // Build menu
 function BuildMenu() {
   for (i of sections) {
@@ -45,7 +44,6 @@ function fn_scroll(e, sender) {
   let trigger = document.getElementById(sender.id.replace('id_', ''));
   trigger.scrollIntoView({ behavior: 'smooth' });
 }
-
 //start build menu
 BuildMenu();
 
