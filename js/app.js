@@ -23,7 +23,7 @@
  *
  */
 
-var sections = document.querySelectorAll('section');
+const sections = document.querySelectorAll('section');
 /**
  * End Global Variables
  * Start Helper Functions
