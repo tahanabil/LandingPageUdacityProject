@@ -32,8 +32,17 @@ const sections = document.querySelectorAll('section');
 function BuildMenu() {
   for (i of sections) {
     let menuItem = document.createElement('li');
-    menuItem.innerHTML = `<a id="id_${i.id}" href="#${i.id}" 
-    class="menu__link" onclick="fn_scroll(event,this)">${i.dataset.nav}</a>`;
+    let atag = document.createElement('a');
+    atag.setAttribute('href', '#' + i.id);
+    atag.setAttribute('id', 'id_' + i.id);
+    atag.innerText = i.dataset.nav;
+    atag.classList.add('menu__link');
+    atag.addEventListener('click', function (e) {
+      e.preventDefault();
+      fn_scroll(event, this);
+    });
+    menuItem.appendChild(atag);
+
     document.getElementById('navbar__list').appendChild(menuItem);
   }
 }
